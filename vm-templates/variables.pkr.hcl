@@ -6,20 +6,20 @@
 # ----------------------------------------------------------------------------
 
 variable "build_repo"{
-    type = string
-    default = "YOURREPOURL"
-  description = "GitHub Repo"
+  type = string
+  default = "packer"
+  description = "Github Repo"
 }
 variable "vsphere_server" {
   type    = string
-  default = "VCENTERSERVERFQDN"
+  default = "idclab-vcen8.fareast.corp.microsoft.com"
   description = "vCenter Server you are deploying your templates to"
 }
 variable "vsphere_user" {
   type      = string
-  default = "USERNAME"
+  default = "arcvmware@vsphere.local"
   sensitive = true
-    description = "User with permissions to create VM's and import to the content library"
+  description = "User with permissions to create VM's and import to the content library"
 }
 variable "vsphere_password" {
   type      = string
@@ -38,46 +38,32 @@ variable "vsphere_folder" {
 }
 variable "vsphere_datacenter" {
     type    = string
-    default = "home-lab"
+    default = "ArcVMwareCriticalInfra"
     description = "Target Datacenter for the deployment"
 }
-variable "vsphere_compute_cluster" {
+// variable "vsphere_compute_cluster" {
+//     type    = string
+//     default = "physical-cluster"
+//     description = "Target Cluster for the deployment"
+// }
+variable "vsphere_compute_esxi_host" {
     type    = string
-    default = "physical-cluster"
-    description = "Target Cluster for the deployment"
+    default = "10.150.176.100"
+    description = "Target Host for the deployment"
 }
 variable "vsphere_portgroup_name" {
     type    = string
-    default = "dvPG-Build-Network"
+    default = "VM Network"
     description = "Target Portgroup/network for the deployment (DHCP enabled with internet access for Windows patching)"
 }
 variable "vsphere_datastore" {
     type    = string
-    default = "ds-vmfs-01"
+    default = "Shared 15TB-1"
     description = "Target Datacenter for the deployment"
-}
-variable "content_library_destination" {
-  type    = string
-  default = "VM-Templates"
-  description = "Name of the content library the template will be uploaded to"
-}
-variable "template_library_Name" {
-  type = string
-  description = "Name of template"
-}
-variable "library_vm_destroy" {
-  type    = bool
-  default = true
-  description = "Destroys the original VM template from the inventory once its has been uploaded to the content library"
-}
-variable "ovf" {
-  type    = bool
-  default = true
-  description = "Template will be uploaded to the content library in the OVF format"
 }
 variable "vm_name" {
   type = string
-  description = "Name of the VM (temporary)"
+  description = "Name of the VM"
 }
 variable "CPUs" {
   type = string
@@ -91,7 +77,7 @@ variable "RAM" {
 }
 variable "disk_size" {
   type = string
-  default = "61440"
+  default = "10240"
   description = "Size of the OS disk in MB"
 }
 variable "firmware" {
@@ -130,6 +116,7 @@ variable "winrm_insecure" {
 variable "communicator_user" {
   type      = string
   sensitive = true
+  default = "Administrator"
   description = "Windows user to continue configuration"
 }
 variable "communicator_password" {

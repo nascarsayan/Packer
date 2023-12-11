@@ -7,7 +7,7 @@
 
 variable "build_repo"{
     type = string
-    default = "https://github.com/*******"
+    default = "https://github.com/nascarsayan/Packer"
   description = "GitHub Repo"
 }
 variable "vsphere_server" {
@@ -56,28 +56,9 @@ variable "vsphere_datastore" {
     default = "ds-vmfs-01"
     description = "Target Datacenter for the deployment"
 }
-variable "content_library_destination" {
-  type    = string
-  default = "VM-Templates"
-  description = "Name of the content library the template will be uploaded to"
-}
-variable "template_library_Name" {
-  type = string
-  description = "Name of template"
-}
-variable "library_vm_destroy" {
-  type    = bool
-  default = true
-  description = "Destroys the original VM template from the inventory once its has been uploaded to the content library"
-}
-variable "ovf" {
-  type    = bool
-  default = true
-  description = "Template will be uploaded to the content library in the OVF format"
-}
 variable "vm_name" {
   type = string
-  description = "Name of the VM (temporary)"
+  description = "Name of the VM"
 }
 variable "CPUs" {
   type = string
@@ -91,7 +72,7 @@ variable "RAM" {
 }
 variable "disk_size" {
   type = string
-  default = "61440"
+  default = "10240"
   description = "Size of the OS disk in MB"
 }
 variable "firmware" {

@@ -2,7 +2,7 @@
     "hostname": "lin-pho-4",
     "password": {
         "crypted": false,
-        "text": "VMware123!"
+        "text": "Password~1"
     },
     "disk": "/dev/sda",
     "partitions": [
@@ -36,7 +36,7 @@
     "postinstall": [
         "#!/bin/sh",
         "useradd -m -G sudo linux-user",
-        "echo \"linux-user:VMware123!\" | chpasswd",
+        "echo \"linux-user:Password~1\" | chpasswd",
         "echo \"linux-user  ALL=(ALL)  NOPASSWD:SETENV: ALL\" >> /etc/sudoers.d/linux-user",
         "sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config",
         "systemctl restart sshd.service",

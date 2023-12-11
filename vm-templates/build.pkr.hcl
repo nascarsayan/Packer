@@ -1,16 +1,25 @@
+packer {
+  required_plugins {
+    vsphere = {
+      source  = "github.com/hashicorp/vsphere"
+      version = "~> 1"
+    }
+    windows-update = {
+      version = "0.14.1"
+      source = "github.com/rgl/windows-update"
+    }
+  }
+}
+
 source "vsphere-iso" "win-2022-std-core" {
   CPUs            = var.CPUs
   RAM             = var.RAM
   boot_command    = var.boot_command
   boot_order      = var.boot_order
   boot_wait       = var.boot_wait
-  cluster         = var.vsphere_compute_cluster
-  content_library_destination {
-    destroy = var.library_vm_destroy
-    library = var.content_library_destination
-    name    = var.template_library_Name
-    ovf     = var.ovf
-  }
+  host         = var.vsphere_compute_esxi_host
+  # cluster         = var.vsphere_compute_cluster
+  convert_to_template = true
   datacenter           = var.vsphere_datacenter
   datastore            = var.vsphere_datastore
   disk_controller_type = var.disk_controller_type
@@ -54,13 +63,9 @@ source "vsphere-iso" "win-2022-std-gui" {
   boot_command    = var.boot_command
   boot_order      = var.boot_order
   boot_wait       = var.boot_wait
-  cluster         = var.vsphere_compute_cluster
-  content_library_destination {
-    destroy = var.library_vm_destroy
-    library = var.content_library_destination
-    name    = var.template_library_Name
-    ovf     = var.ovf
-  }
+  host         = var.vsphere_compute_esxi_host
+  # cluster         = var.vsphere_compute_cluster
+  convert_to_template = true
   datacenter           = var.vsphere_datacenter
   datastore            = var.vsphere_datastore
   disk_controller_type = var.disk_controller_type
@@ -104,13 +109,9 @@ source "vsphere-iso" "photon-4" {
   boot_command    = [ "<esc><wait> vmlinuz initrd=initrd.img root=/dev/ram0 loglevel=3 insecure_installation=1 ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/${ var.http_file } photon.media=cdrom <enter>" ]
   boot_order      = var.boot_order
   boot_wait       = var.boot_wait
-  cluster         = var.vsphere_compute_cluster
-  content_library_destination {
-    destroy = var.library_vm_destroy
-    library = var.content_library_destination
-    name    = var.template_library_Name
-    ovf     = var.ovf
-  }
+  host         = var.vsphere_compute_esxi_host
+  # cluster         = var.vsphere_compute_cluster
+  convert_to_template = true
   datacenter           = var.vsphere_datacenter
   datastore            = var.vsphere_datastore
   disk_controller_type = var.disk_controller_type
@@ -149,13 +150,9 @@ source "vsphere-iso" "rhel-8" {
                       "<enter><wait><wait><enter>" ]
   boot_order      = var.boot_order
   boot_wait       = var.boot_wait
-  cluster         = var.vsphere_compute_cluster
-  content_library_destination {
-    destroy = var.library_vm_destroy
-    library = var.content_library_destination
-    name    = var.template_library_Name
-    ovf     = var.ovf
-  }
+  host         = var.vsphere_compute_esxi_host
+  # cluster         = var.vsphere_compute_cluster
+  convert_to_template = true
   datacenter           = var.vsphere_datacenter
   datastore            = var.vsphere_datastore
   disk_controller_type = var.disk_controller_type

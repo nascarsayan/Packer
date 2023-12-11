@@ -1,6 +1,6 @@
 //Defined User Variables
 vsphere_datacenter      = "dc-smt-01"
-vsphere_password        = "VMware123!"
+vsphere_password        = "Password~1"
 vsphere_compute_cluster = "cl-vsan-01"
 vsphere_portgroup_name  = "dvPG_Demo_DHCP_149"
 vsphere_datastore       = "ds-vsan-01"
@@ -14,7 +14,7 @@ vm_version              = "17"
 notes                   = "Built via Packer with user defined variables"
 guest_os_type           = "centos7_64Guest"
 ssh_username            = "linux_user"
-ssh_password            = "VMware123!"
+ssh_password            = "Password~1"
 ssh_timeout             = "30m"
 disk_controller_type    = ["pvscsi"]
 os_iso_path             = "[ds-vsan-01] /Media/CentOS-7-x86_64-DVD-2009.iso"

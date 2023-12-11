@@ -6,3 +6,5 @@ crash.log
 
 #Other
 .DS_Store
+
+creds.pkrvar.hcl
