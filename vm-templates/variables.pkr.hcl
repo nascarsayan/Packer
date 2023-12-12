@@ -87,7 +87,7 @@ variable "firmware" {
 }
 variable "vm_version" {
   type = string
-  default = "19"
+  default = "14"
   description = "VM Hardware Version.  Default should be the minimum common version for the versions of vSphere the template will be used"
 }
 variable "guest_os_type" {
