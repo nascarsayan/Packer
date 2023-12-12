@@ -1,10 +1,17 @@
-<img src="https://github.com/smctighevcp/Packer/blob/main/packer-icon.svg" style="width:150px;height:150px;">
+<img src="packer-icon.svg" style="width:150px;height:150px;">
 
 # Packer
 
 ## TL;DR
 
-Check the `vm-templates/Makefile`.
+1. Download the required ISOs and upload to the datastore.
+   - Windows Server 2022
+   - [VMware Tools](https://packages.vmware.com/tools/releases/latest/windows)
+   - etc.
+
+2. Check the `vm-templates/Makefile`. Currently, only Windows Server 2022 is added to Makefile and tested. TODO: Test and add other OSes to Makefile.
+
+3. Copy `vm-templates/creds.example.pkrvar.hcl` to `vm-templates/creds.pkrvar.hcl` and update the variables. Edit the `vm-templates/vars/win-2022-core/win2022core.pkrvar.hcl` file to match your environment.
 
 ```sh
 cd vm-templates
